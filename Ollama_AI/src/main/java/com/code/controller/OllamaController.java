@@ -20,6 +20,7 @@ public class OllamaController {
 		this.chatclient = ChatClient.create(chatModel);
 	}
 	
+//	demo url: http://localhost:8080/api/ollama/give one line defintion for spring boot
 	@GetMapping("/{message}")
 	public ResponseEntity<String> getAnswer(@PathVariable String message) {
 		String response=chatclient.prompt(message).call().content();
