@@ -1,4 +1,4 @@
-# 🧠 Spring AI Practice Modules
+# Spring AI Practice Modules
 
 A curated collection of hands-on practice modules exploring the capabilities of **Spring AI** – a new project by Spring to integrate AI models like OpenAI, Ollama, Azure OpenAI, and more into Spring applications.
 
