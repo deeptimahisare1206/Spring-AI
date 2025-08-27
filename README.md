@@ -4,7 +4,7 @@ A curated collection of hands-on practice modules exploring the capabilities of 
 
 ---
 
-## 📚 Overview
+##  Overview
 
 This repository contains modular examples that demonstrate how to use Spring AI features with various backends and use-cases, including:
 
@@ -22,7 +22,7 @@ Each folder is a self-contained Spring Boot project with minimal setup for ease 
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
