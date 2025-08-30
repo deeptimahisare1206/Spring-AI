@@ -15,10 +15,7 @@ This repository contains modular examples that demonstrate how to use Spring AI 
 - Spring Boot integration with AI services
 - Experimentation with streaming responses, tools, and chains
 
----
 
-
-Each folder is a self-contained Spring Boot project with minimal setup for ease of use and learning.
 
 ---
 
