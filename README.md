@@ -1,33 +1,47 @@
-# Spring AI Practice Modules
-next target smart email assistant 
-A curated collection of hands-on practice modules exploring the capabilities of **Spring AI** – a new project by Spring to integrate AI models like OpenAI, Ollama, Azure OpenAI, and more into Spring applications.
+# Spring AI Practice & Smart Email Assistant
+
+This repository contains two main components:
+
+1. **Spring AI Practice Module**
+
+   * Hands-on examples to explore **Spring AI** with **local Ollama models**.
+   * Covers fundamental concepts such as prompt engineering, text generation, embeddings, and connecting AI models to Spring Boot applications.
+
+2. **Smart Email Assistant Project**
+
+   * A full-stack application that demonstrates a **real-world use case** of Spring AI.
+   * **Backend:** Built with **Spring Boot + Spring AI** to process emails, generate smart responses, and categorize content.
+   * **Frontend:** Built with **ReactJS**, providing a user-friendly interface for managing and interacting with AI-powered email features.
 
 ---
 
-## 📚 Overview
+##  Tech Stack
 
-This repository contains modular examples that demonstrate how to use Spring AI features with various backends and use-cases, including:
-
-- Basic chat completions using local and remote models
-- REST API integration with AI backends
-- Prompt engineering with templates
-- Using Ollama models locally
-- Spring Boot integration with AI services
-- Experimentation with streaming responses, tools, and chains
+* **Backend:** Java, Spring Boot, Spring AI, Ollama
+* **Frontend:** ReactJS, TailwindCSS 
 
 ---
 
+##  Features
 
-Each folder is a self-contained Spring Boot project with minimal setup for ease of use and learning.
+### 🔹 Spring AI Practice Module
+
+* Run and test prompts with local Ollama models.
+* Generate and transform text using AI APIs.
+
+### 🔹 Smart Email Assistant
+
+* Connects to email accounts (via APIs or sample dataset).
+* Uses Spring AI for:
+
+  * Smart reply suggestions.
+  * Response according to the tone set.
+* Frontend UI built with ReactJS.
 
 ---
 
-## 🚀 Getting Started
+##  Goals
 
-### Prerequisites
-
-- Java 17+
-- Maven
-- Ollama setup(for running Ollama models locally)
-- Spring Boot CLI (optional)
+* Learn **Spring AI** fundamentals with local LLMs.
+* Build a **production-style project** (Smart Email Assistant) that integrates AI seamlessly into backend and frontend applications.
 
