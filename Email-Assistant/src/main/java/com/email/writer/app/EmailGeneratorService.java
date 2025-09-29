@@ -36,13 +36,12 @@ public class EmailGeneratorService {
 
 		Map<String, Object> requestBody = Map.of("contents", new Object[] { Map.of("parts", new Object[] {
 
-				Map.of("text", new Object[] {
-
-				}) }) });
+				Map.of("text", prompt) }) });
 		
 		String response =webClient.post()
-				.uri(geminiApiUrl + geminiApiKey)
+				.uri(geminiApiUrl +"?key="+ geminiApiKey)
 				.header("Content-Type", "application/json")
+				.header("Accept", "application/json")
 				.bodyValue(requestBody)
 				.retrieve()
 				.bodyToMono(String.class)
@@ -60,12 +59,12 @@ public class EmailGeneratorService {
 			ObjectMapper obj = new ObjectMapper();
 			JsonNode rootNode = obj.readTree(response);
 			return rootNode.path("candidates")
-					.get(0)
-					.path("contents")
-					.path("parts")
-					.get(0)
-					.path("text")
-					.asText();
+	                .get(0)
+	                .path("content")
+	                .path("parts")
+	                .get(0)
+	                .path("text")
+	                .asText();
 					
 		} catch (Exception e) {
 			return "Error Processing response" + e.getMessage();
