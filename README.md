@@ -40,7 +40,7 @@ This repository contains two main components:
 
 ---
 
-##  Goals
+##  Goals/target
 
 * Learn **Spring AI** fundamentals with local LLMs.
 * Build a **production-style project** (Smart Email Assistant) that integrates AI seamlessly into backend and frontend applications.
