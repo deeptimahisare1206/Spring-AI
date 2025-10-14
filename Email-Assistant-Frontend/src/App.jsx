@@ -55,7 +55,14 @@ function App() {
           <textarea
             className="border-2 w-full min-h-45 p-3"
             value={reply || ''}
+            inputProps={{readOnly:true}}
           ></textarea>
+
+           <button
+          onClick={handleSubmit}
+          className="bg-[#d4ad54] p-3 text-[#213e49] font-extrabold text-xl disabled:bg-gray-500"
+          
+        >Copy</button>
         </div>
         )
         }
