@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
+import axios from "axios";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -9,7 +10,26 @@ function App() {
   const [loading, setLoading] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+setLoading(true);
+setError('');
+try {
+  
+  const response = await axios.post("",{
+    email,
+    tone
+  });
+  setReply(typeof response.data=== "string" ? response.data : JSON.stringify(response.data))
+} catch (error) {
+  setError("Failed to Generate Email Reply!");
+  console.error(error);
+}
+finally{
+setLoading(false);
+}
+
+
+  };
   return (
     <>
       <p className="text-5xl text-center  text-[#d4ad54]">Email-Assistant</p>
@@ -59,7 +79,7 @@ function App() {
           ></textarea>
 
            <button
-          onClick={handleSubmit}
+          onClick={() => navigator.clipboard.writeText(reply)}
           className="bg-[#d4ad54] p-3 text-[#213e49] font-extrabold text-xl disabled:bg-gray-500"
           
         >Copy</button>
