@@ -82,7 +82,7 @@ setLoading(false);
           onClick={() => navigator.clipboard.writeText(reply)}
           className="bg-[#d4ad54] p-3 text-[#213e49] font-extrabold text-xl disabled:bg-gray-500"
           
-        >Copy</button>
+        >Copy to Clipboard</button>
         </div>
         )
         }
