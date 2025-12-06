@@ -1,6 +1,5 @@
 @import "tailwindcss";
-
+/* set all the pages default background*/
 body{
-
     @apply bg-[#213e49]
 }

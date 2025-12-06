@@ -1,4 +1,4 @@
-# Spring AI Practice & Smart Email Assistant with gmail extention add on
+# Spring AI Practice & Smart Email Assistant(Gmail extension)
 
 
 This repository contains two main components:
