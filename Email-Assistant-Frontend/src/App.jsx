@@ -32,7 +32,7 @@ setLoading(false);
   };
   return (
     <>
-      <p className="text-5xl text-center  text-[#d4ad54]">Email-Assistant</p>
+      <p className="text-5xl text-center py-4 text-[#d4ad54]">Email-Assistant</p>
 
       <div className="max-w-full min-h-[90vh] flex flex-col gap-4 items-center text-[#e4dcd0] py-2">
         <div className="flex flex-col w-1/2">
