@@ -6,6 +6,13 @@ public class EmailRequest {
 	private String emailContent;
 	
 	private String tone;
+	
+	 public EmailRequest() {}
+
+	    public EmailRequest(String emailContent, String tone) {
+	        this.emailContent = emailContent;
+	        this.tone = tone;
+	    }
 
 	public String getEmailContent() {
 		return emailContent;

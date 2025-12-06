@@ -15,10 +15,11 @@ setLoading(true);
 setError('');
 try {
   // API insertion remaining 
-  const response = await axios.post("",{
-    email,
-    tone
+  const response = await axios.post("http://localhost:8080/api/email/generate",{
+    emailContent:email,
+    tone:tone
   });
+  console.log(email);
   setReply(typeof response.data=== "string" ? response.data : JSON.stringify(response.data))
 } catch (error) {
   setError("Failed to Generate Email Reply!");

@@ -1,90 +1,90 @@
-package com.email.writer.app;
-
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-@Service
-public class EmailGeneratorService {
+	package com.email.writer.app;
 	
-	private final WebClient webClient;
+	import java.util.Map;
 	
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.beans.factory.annotation.Value;
+	import org.springframework.stereotype.Service;
+	import org.springframework.web.reactive.function.client.WebClient;
 	
-	public EmailGeneratorService(WebClient.Builder webClient) {
-		super();
-		this.webClient = webClient.build();
-	}
-
-
-
-	@Value("${gemini.api.url}")
-	private String geminiApiUrl;
-
-
-	@Value("${gemini.api.key}")
-	private String geminiApiKey;
-
-	public String emailReply(EmailRequest emailreq) {
-
-		String prompt = buildPrompt(emailreq);
-
-		Map<String, Object> requestBody = Map.of("contents", new Object[] { Map.of("parts", new Object[] {
-
-				Map.of("text", prompt) }) });
+	import com.fasterxml.jackson.databind.JsonNode;
+	import com.fasterxml.jackson.databind.ObjectMapper;
+	
+	@Service
+	public class EmailGeneratorService {
 		
-		String response =webClient.post()
-				.uri(geminiApiUrl +"?key="+ geminiApiKey)
-				.header("Content-Type", "application/json")
-				.header("Accept", "application/json")
-				.bodyValue(requestBody)
-				.retrieve()
-				.bodyToMono(String.class)
-				.block();
+		private final WebClient webClient;
 		
 		
-		return extractApiResponse(response);
-	}
+		public EmailGeneratorService(WebClient.Builder webClient) {
+			super();
+			this.webClient = webClient.build();
+		}
 	
 	
-
-	private String extractApiResponse(String response) {
-		try {
+	
+		@Value("${gemini.api.url}")
+		private String geminiApiUrl;
+	
+	
+		@Value("${gemini.api.key}")
+		private String geminiApiKey;
+	
+		public String emailReply(EmailRequest emailreq) {
+	
+			String prompt = buildPrompt(emailreq);
+	
+			Map<String, Object> requestBody = Map.of("contents", new Object[] { Map.of("parts", new Object[] {
+	
+					Map.of("text", prompt) }) });
 			
-			ObjectMapper obj = new ObjectMapper();
-			JsonNode rootNode = obj.readTree(response);
-			return rootNode.path("candidates")
-	                .get(0)
-	                .path("content")
-	                .path("parts")
-	                .get(0)
-	                .path("text")
-	                .asText();
-					
-		} catch (Exception e) {
-			return "Error Processing response" + e.getMessage();
+			String response =webClient.post()
+					.uri(geminiApiUrl +"?key="+ geminiApiKey)
+					.header("Content-Type", "application/json")
+					.header("Accept", "application/json")
+					.bodyValue(requestBody)
+					.retrieve()
+					.bodyToMono(String.class)
+					.block();
+			
+			
+			return extractApiResponse(response);
 		}
-
-	}
-
-
-
-	public String buildPrompt(EmailRequest emailreq) {
-
-		StringBuilder prompt = new StringBuilder();
-
-		prompt.append(
-				"Generate a professional email reply for the following email content. Please do not generate subject line.");
-		if (emailreq.getTone() != null && !emailreq.getTone().isEmpty()) {
-			prompt.append("Use a ").append(emailreq.getTone()).append("tone");
+		
+		
+	
+		private String extractApiResponse(String response) {
+			try {
+				
+				ObjectMapper obj = new ObjectMapper();
+				JsonNode rootNode = obj.readTree(response);
+				return rootNode.path("candidates")
+		                .get(0)
+		                .path("content")
+		                .path("parts")
+		                .get(0)
+		                .path("text")
+		                .asText();
+						
+			} catch (Exception e) {
+				return "Error Processing response" + e.getMessage();
+			}
+	
 		}
-		prompt.append("\n Original mail: \n").append(emailreq.getEmailContent());
-
-		return prompt.toString();
+	
+	
+	
+		public String buildPrompt(EmailRequest emailreq) {
+	
+			StringBuilder prompt = new StringBuilder();
+	
+			prompt.append(
+					"Generate a professional email reply for the following email content. Please do not generate subject line.");
+			if (emailreq.getTone() != null && !emailreq.getTone().isEmpty()) {
+				prompt.append("Use a ").append(emailreq.getTone()).append("tone");
+			}
+			prompt.append("\n Original mail: \n").append(emailreq.getEmailContent());
+	
+			return prompt.toString();
+		}
 	}
-}
