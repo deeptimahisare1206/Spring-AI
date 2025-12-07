@@ -18,7 +18,6 @@ try {
     emailContent:email,
     tone:tone
   });
-  console.log(email);
   setReply(typeof response.data=== "string" ? response.data : JSON.stringify(response.data))
 } catch (error) {
   setError("Failed to Generate Email Reply!");
